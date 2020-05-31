@@ -56,7 +56,7 @@ public class Name implements FirstName, LastName {
         if (input.charAt(0) == 'N' || input.charAt(0) == 'n') {
             setName();
         } else {
-            System.out.println("Bye");
+            // end of algorithm
         }
     }
 
