@@ -17,6 +17,7 @@ abstract public class Degree {
 
     public Degree(float temperatureValue) {
         setDegreeValue(temperatureValue);
+        setDegreeSymbol();
     }
 
     public void setDegreeValue() {

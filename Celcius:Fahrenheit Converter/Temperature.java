@@ -17,7 +17,7 @@ public class Temperature {
             System.out.println("completed farh constructor");
             setCelcius(getFahrenheit());
         }
-        System.out.println(print());
+        System.out.println(getTemperatureOutput());
     }
 
     public String askDegreeType(Scanner scanner) {
@@ -65,10 +65,8 @@ public class Temperature {
         return fahrenheit;
     }
 
-    public String print() {
-        return "In Celcius : " + this.celcius.getDegreeValue() + new String(this.celcius.getDegreeSymbol()) + " "
-                + "\nIn Fahrenheit : " + this.fahrenheit.getDegreeValue()
-                + new String(this.fahrenheit.getDegreeSymbol());
+    public String getTemperatureOutput() {
+        return "In Celcius : " + this.celcius.toString() + "\nIn Fahrenheit : " + this.fahrenheit.toString();
     }
 
 }
