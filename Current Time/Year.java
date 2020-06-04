@@ -46,7 +46,6 @@ public class Year extends DateTimeClass {
     public int getYear() {
         return this.year;
     }
-
     public long getYEARINMILLIS() {
         return YEARINMILLIS;
     }
