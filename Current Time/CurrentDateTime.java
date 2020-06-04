@@ -8,6 +8,8 @@ public class CurrentDateTime {
     Hours currentHours;
     Minutes currentMinutes;
     Seconds currentSeconds;
+    DateTimePattern dateTimePattern;
+    String displayCurrentDateTime;
 
     public CurrentDateTime() {
         setBST(true);
@@ -85,8 +87,27 @@ public class CurrentDateTime {
         return currentSeconds;
     }
 
-    public static void main(String[] args) {
-        CurrentDateTime cdt = new CurrentDateTime();
+    public int YearToString(){
+        return this.getCurrentYear().getYear();
     }
 
+    public int MonthToString(){
+        return this.getCurrentMonth().getMonth();
+    }
+
+    public int DayToString(){
+        return this.getCurrentDay().getDay();
+    }
+
+    public int HoursToString(){
+        return this.getCurrentHours().getHours();
+    }
+
+    public int MinutesToString(){
+        return this.getCurrentMinutes().getMinutes();
+    }
+
+    public int SecondsToString(){
+        return this.getCurrentSeconds().getSeconds();
+    }
 }
