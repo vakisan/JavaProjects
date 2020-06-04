@@ -34,7 +34,6 @@ StringBuilder and StringBuffer are mutable. we can modify them using append and 
 StringBuilder is prefered over stringbuffer due to speed. however string buffer provides tread safety in contrast to StringBuffer.
 */
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -65,30 +64,39 @@ public class CurrentDateTimeFormat {
         switch(matchDateTimePatternWithFormat()){
             case 0 : {
                 this.dateTimePattern = DateTimePattern.YEAR_MONTH_DAY;
-                setResult0(result);
+                setResult0();
             }; break;
 
             case 1: {
                 this.dateTimePattern = DateTimePattern.YEAR_MONTH_DAY_HOURS_MINUTES_SECONDS;
-                setResult1(result);
-            }
+                setResult1();
+            }; break;
 
             case 2: {
+                this.dateTimePattern = DateTimePattern.DAY_MONTH_YEAR;
+                setResult2();
+            } break;
 
+            case 3: {
+                this.dateTimePattern = DateTimePattern.DAY_MONTH_YEAR_HOURS_MINUTES_SECONDS;
+                setResult3();
+            } break;
+
+            default: {
+                this.dateTimePattern = DateTimePattern.DAY_MONTH_YEAR_HOURS_MINUTES_SECONDS;
+                setResult3();
             }
         }
     }
 
     public int matchDateTimePatternWithFormat(){
         String[] regexArray = DateTimePattern.getRegexArrayAll();
-        System.out.println(Arrays.toString(regexArray));
         Matcher matcher= null;
         this.pattern = new Pattern[regexArray.length];
         for(int i = 0; i<regexArray.length; i++){
             this.pattern[i] = Pattern.compile(regexArray[i], Pattern.CASE_INSENSITIVE);
             matcher = pattern[i].matcher(getFormat());
             if(matcher.matches()){
-                //System.out.println(regexArray[i]);
                 return i;
             }
         }
@@ -119,20 +127,24 @@ public class CurrentDateTimeFormat {
         return (this.getCurrentDateTime().YearToString() + "/" + this.getCurrentDateTime().MonthToString() + "/" + this.getCurrentDateTime().DayToString());
     }
 */
-    public void setResult0(String result) {
+    public void setResult0() {
         this.result = this.getCurrentDateTime().YearToString() + "/" + this.getCurrentDateTime().MonthToString() + "/" + this.getCurrentDateTime().DayToString();
     }
 
-    public void setResult1(String result) {
+    public void setResult1() {
         this.result = this.getCurrentDateTime().YearToString() + "/" + this.getCurrentDateTime().MonthToString() + "/" + this.getCurrentDateTime().DayToString() + " " + this.getCurrentDateTime().HoursToString() + ":" + this.getCurrentDateTime().MinutesToString() + ":" + this.getCurrentDateTime().SecondsToString();
     }
+
+    public void setResult2() {
+        this.result = this.getCurrentDateTime().DayToString() + "/" + this.getCurrentDateTime().MonthToString() + "/" + this.getCurrentDateTime().YearToString();
+    }
+
+    public void setResult3() {
+        this.result = this.getCurrentDateTime().DayToString() + "/" + this.getCurrentDateTime().MonthToString() + "/" + this.getCurrentDateTime().YearToString() + " " + this.getCurrentDateTime().HoursToString() + ":" + this.getCurrentDateTime().MinutesToString() + ":" + this.getCurrentDateTime().SecondsToString();
+    }
+    
 
     public String getResult() {
         return result;
     }    
-
-    public static void main(String[] args) {
-        CurrentDateTime n = new CurrentDateTime();
-        CurrentDateTimeFormat cdtf = new CurrentDateTimeFormat(n, "YYY/MM/DD Hh:mm:ss");
-    }
 }

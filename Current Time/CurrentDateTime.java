@@ -8,8 +8,6 @@ public class CurrentDateTime {
     Hours currentHours;
     Minutes currentMinutes;
     Seconds currentSeconds;
-    DateTimePattern dateTimePattern;
-    String displayCurrentDateTime;
 
     public CurrentDateTime() {
         setBST(true);
@@ -20,7 +18,12 @@ public class CurrentDateTime {
         setCurrentHours();
         setCurrentMinutes();
         setCurrentSeconds();
-        System.out.println(getCurrentYear().getYear() + " " + getCurrentMonth().getMonth() + " " + getCurrentDay().getDay() + " " + getCurrentHours().getHours() + " " + getCurrentMinutes().getMinutes() + " " +getCurrentSeconds().getSeconds());
+        displayDateTime();
+    }
+
+    public void displayDateTime(){
+        String result = DayToString() + "/" + MonthToString() + "/" + YearToString() + " " + HoursToString() + ":" + MinutesToString() + ":" + SecondsToString();
+        System.out.println(result);
     }
 
     public boolean isBST() {
