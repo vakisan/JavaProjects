@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public enum DateTimePattern {
     
     YEAR_MONTH_DAY ("\\bY{1,4}\\b/M{1,2}\\b/D{1,2}", 0),
